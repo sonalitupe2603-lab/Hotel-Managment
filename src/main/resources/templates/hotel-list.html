@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel List</title>
+	
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<div th:replace="fragments/navbar :: body"></div>
+<h2>All Hotels</h2>
+
+<a href="/hotels/add">Add New Hotel</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="hotel : ${hotels}">
+        <td th:text="${hotel.id}"></td>
+        <td th:text="${hotel.name}"></td>
+        <td th:text="${hotel.location}"></td>
+        <td th:text="${hotel.pricePerNight}"></td>
+        <td th:text="${hotel.rating}"></td>
+        <td>
+            <a th:href="@{/hotels/edit/{id}(id=${hotel.id})}">Edit</a>
+            |
+            <a th:href="@{/hotels/delete/{id}(id=${hotel.id})}"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
