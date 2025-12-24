@@ -12,6 +12,7 @@ public class Hotel {
 	private String location;
 	private int rating;
 	private double pricePerNight;
+	private String abc;
 	
     public Hotel() {}
 
